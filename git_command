@@ -4,3 +4,4 @@ git commit -m "xxx"
 git status
 git remote add origin https://github.com/liepengGitHub/minions.git
 git push -u orgin master
+git clone https://github.com/liepengGitHub/minions.git
