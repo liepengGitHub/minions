@@ -1,0 +1,6 @@
+git init
+git add <file>...
+git commit -m "xxx"
+git status
+git remote add origin https://github.com/liepengGitHub/minions.git
+git push -u orgin master
