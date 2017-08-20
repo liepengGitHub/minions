@@ -1,0 +1,33 @@
+//下载并以不同的文件名保存
+ wget -O wordpress.zip http://www.linuxde.net/download.aspx?id=1080
+ wget默认会以最后一个符合/的后面的字符来命令，对于动态链接的下载通常文件名会不正确。 错误：下面的例子会下载一个文件并以名称download.aspx?id=1080保存:
+ wget http://www.linuxde.net/download?id=1 
+即使下载的文件是zip格式，它仍然以download.php?id=1080命令。
+ 正确：为了解决这个问题，我们可以使用参数-O来指定一个文件名：
+ wget -O wordpress.zip http://www.linuxde.net/download.aspx?id=1080
+
+//wget限速下载 
+wget --limit-rate=300k http://www.linuxde.net/testfile.zip 
+当你执行wget的时候，它默认会占用全部可能的宽带下载。但是当你准备下载一个大文件，而你还需要下载其它文件时就有必要限速了。
+
+//使用wget断点续传 
+wget -c http://www.linuxde.net/testfile.zip 
+使用wget -c重新启动下载中断的文件，对于我们下载大文件时突然由于网络等原因中断非常有帮助，我们可以继续接着下载而不是重新下载一个文件。需要继续中断的下载时可以使用-c参数。
+
+//使用wget后台下载 
+wget -b http://www.linuxde.net/testfile.zip 
+Continuing in background, pid 1840. 
+Output will be written to `wget-log'. 
+对于下载非常大的文件的时候，我们可以使用参数-b进行后台下载，你可以使用以下命令来察看下载进度： tail -f wget-log
+
+//过滤指定格式下载 wget --reject=gif ur 下载一个网站，但你不希望下载图片，可以使用这条命令。
+
+//把下载信息存入日志文件 wget -o download.log URL
+
+//下载指定格式文件 wget -r -A.pdf url
+
+
+//伪装代理名称下载 
+wget --user-agent="Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US) AppleWebKit/534.16 (KHTML, like Gecko) Chrome/10.0.648.204 Safari/534.16" http://www.linuxde.net/testfile.zip 有些网站能通过根据判断代理名称不是浏览器而拒绝你的下载请求。不过你可以通过--user-agent参数伪装。
+
+来自: http://man.linuxde.net/wget
